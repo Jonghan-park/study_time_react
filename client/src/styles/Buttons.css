@@ -1,0 +1,24 @@
+
+.btn{
+  font-size: 2rem;
+  padding: 1rem 3rem;
+  margin: 2rem;
+  color: #222222;
+  border: 2px solid #8b8a8a;
+  box-shadow: 2px 2px #8b8a8a;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.btn:hover{
+  opacity: 0.7;
+}
+.btn_Start{
+  background: linear-gradient(135deg, #013f85, #649fec);
+}
+.btn_Stop{
+  background: linear-gradient(135deg, #930d0a, #a55251);
+}
+.btn_Save{
+  background: linear-gradient(135deg, #0a930d, #51a552);
+ 
+}

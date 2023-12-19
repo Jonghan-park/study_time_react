@@ -1,0 +1,47 @@
+
+.form_container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 50vh;
+}
+
+form{
+  width: 40%;
+  height: 300px;
+  text-align: center;
+  min-height: 10vh;
+  background: #fff;
+  border-radius: 10px;
+
+}
+.divider{
+  width: 90%;
+  border-bottom: 1px solid #222222;
+  margin: 0 auto;
+}
+form h1{
+  color: #222222;
+  padding: 2rem 0;
+}
+
+form p{
+  padding-bottom: 1rem;
+}
+.go_back{
+  font-size: 2rem;
+  cursor: pointer;
+  color: #fff;
+  margin: 5rem;
+}
+
+.go_back:hover{
+  color: #727272;
+}
+.oauth_container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  padding: 2rem;
+}
+
