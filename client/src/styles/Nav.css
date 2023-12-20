@@ -1,0 +1,42 @@
+nav{
+  min-height: 10vh;
+  display: flex;
+  align-items: center;
+}
+.login_container{
+  width: 100%;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.login{
+  background: #222222;
+  border: none;
+  text-decoration: none;
+  color: #fff;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+.login:hover{
+  color: #8b8a8a;
+}
+.go_back_container{
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0 2rem;
+
+}
+
+.go_back{
+  font-size: 2rem;
+  cursor: pointer;
+  color: #fff;
+  margin: 2rem;
+}
+
+.go_back:hover{
+  color: #727272;
+}

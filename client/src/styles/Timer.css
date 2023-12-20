@@ -27,3 +27,46 @@
   background: #222222;
   color: #fff;
 }
+.full_screen_mode{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 0 1rem;
+}
+
+.full_screen{
+  font-size: 2rem;
+  cursor: pointer;
+  color: #fff;
+}
+
+
+/* Responsive web page */
+@media (max-width: 1100px) {
+  /* Styles for screens smaller than 768px */
+  .time_container{
+    font-size: 7rem;
+  }
+  .btn{
+    font-size: 1rem;
+    padding: .5rem 2rem;
+    margin: .5rem;
+  }
+  .full_screen{
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 772px) {
+  .time_container{
+    font-size: 5rem;
+    min-height: 30vh;
+  }
+}
+
+@media (max-width: 570px) {
+  .time_container{
+    font-size: 3rem;
+    min-height: 20vh;
+  }
+}

@@ -1,4 +1,5 @@
 import React from "react";
+import { MdOutlineFullscreen } from "react-icons/md";
 import "../styles/Timer.css";
 
 const Timer = () => {
@@ -12,7 +13,7 @@ const Timer = () => {
         <span>:</span>
         <h1 class="seconds">00</h1>
         <div class="full_screen_mode">
-          <i class="fa-solid fa-expand full_screen"></i>
+          <MdOutlineFullscreen class="full_screen" />
         </div>
       </div>
     </div>

@@ -7,18 +7,3 @@ body{
   background: #222222;
   overflow: hidden;
 }
-main{
-  position: relative;
-  min-height: 80vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
-nav{
-  min-height: 10vh;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;  
-  
-}

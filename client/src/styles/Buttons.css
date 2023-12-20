@@ -22,3 +22,14 @@
   background: linear-gradient(135deg, #0a930d, #51a552);
  
 }
+
+/* Responsive web page */
+@media (max-width: 1100px) {
+  /* Styles for screens smaller than 768px */
+  .btn{
+    font-size: 1rem;
+    padding: .5rem 2rem;
+    margin: .5rem;
+  }
+
+}
