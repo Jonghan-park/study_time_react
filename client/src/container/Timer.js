@@ -4,16 +4,16 @@ import "../styles/Timer.css";
 
 const Timer = () => {
   return (
-    <div class="time_container">
-      <h2 class="title">Count Study Hours</h2>
-      <div class="time">
-        <h1 class="hour">0</h1>
+    <div className="time_container">
+      <h2 className="title">Count Study Hours</h2>
+      <div className="time">
+        <h1 className="hour">0</h1>
         <span>:</span>
-        <h1 class="minutes">00</h1>
+        <h1 className="minutes">00</h1>
         <span>:</span>
-        <h1 class="seconds">00</h1>
-        <div class="full_screen_mode">
-          <MdOutlineFullscreen class="full_screen" />
+        <h1 className="seconds">00</h1>
+        <div className="full_screen_mode">
+          <MdOutlineFullscreen className="full_screen" />
         </div>
       </div>
     </div>

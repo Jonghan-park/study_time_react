@@ -1,15 +1,20 @@
-import React, { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import React from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaArrowLeft } from "react-icons/fa";
 import "../styles/Nav.css";
 
 const Nav = () => {
   const location = useLocation();
+  const navigate = useNavigate();
+  const goBack = () => {
+    navigate(-1);
+  };
+
   return (
     <nav>
       {location.pathname === "/login" ? (
         <div className="go_back_container">
-          <FaArrowLeft className="go_back" />
+          <FaArrowLeft onClick={() => goBack()} className="go_back" />
         </div>
       ) : (
         <div className="login_container">

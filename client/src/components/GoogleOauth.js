@@ -3,10 +3,10 @@ import "../styles/GoogleIcon.css";
 
 const GoogleOauth = () => {
   return (
-    <button class="gsi-material-button">
-      <div class="gsi-material-button-state"></div>
-      <div class="gsi-material-button-content-wrapper">
-        <div class="gsi-material-button-icon">
+    <button className="gsi-material-button">
+      <div className="gsi-material-button-state"></div>
+      <div className="gsi-material-button-content-wrapper">
+        <div className="gsi-material-button-icon">
           <svg
             version="1.1"
             xmlns="http://www.w3.org/2000/svg"
@@ -33,7 +33,9 @@ const GoogleOauth = () => {
             <path fill="none" d="M0 0h48v48H0z"></path>
           </svg>
         </div>
-        <span class="gsi-material-button-contents">Sign in with Google</span>
+        <span className="gsi-material-button-contents">
+          Sign in with Google
+        </span>
         <span style={{ display: "none" }}>Sign in with Google</span>
       </div>
     </button>

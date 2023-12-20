@@ -4,7 +4,7 @@ import "../styles/Buttons.css";
 
 const Buttons = () => {
   return (
-    <div class="button_container">
+    <div className="button_container">
       <Button name="Start" />
       <Button name="Stop" />
       <Button name="Reset" />

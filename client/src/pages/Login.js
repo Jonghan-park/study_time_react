@@ -8,8 +8,8 @@ const Login = () => {
       <form>
         <h1>Login</h1>
         <p>Please Login to Continue</p>
-        <hr class="divider" />
-        <div class="oauth_container">
+        <hr className="divider" />
+        <div className="oauth_container">
           <GoogleOauth />
         </div>
       </form>
