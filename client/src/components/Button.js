@@ -1,7 +1,37 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import {
+  startTimer,
+  stopTimer,
+  resetTimer,
+  saveTimer,
+} from "../features/timer/timerSlice";
 
 const Button = ({ name }) => {
-  return <button className={`btn btn_${name}`}>{name}</button>;
+  const dispatch = useDispatch();
+  const handleClick = () => {
+    switch (name) {
+      case "Start":
+        dispatch(startTimer());
+        break;
+      case "Stop":
+        dispatch(stopTimer());
+        break;
+      case "Reset":
+        dispatch(resetTimer());
+        break;
+      case "Save":
+        dispatch(saveTimer());
+        break;
+      default:
+        break;
+    }
+  };
+  return (
+    <button onClick={handleClick} className={`btn btn_${name}`}>
+      {name}
+    </button>
+  );
 };
 
 export default Button;

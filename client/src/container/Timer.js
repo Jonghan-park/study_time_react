@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import { MdOutlineFullscreen, MdFullscreenExit } from "react-icons/md";
 import "../styles/Timer.css";
 
