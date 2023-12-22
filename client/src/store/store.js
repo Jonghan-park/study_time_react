@@ -1,8 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import timerReducer from "../features/timer/timerSlice";
+import operationSlice from "../features/operation/operationSlice";
+import timerSlice from "../features/timer/timerSlice";
 
 export default configureStore({
   reducer: {
-    timer: timerReducer,
+    operation: operationSlice,
+    timer: timerSlice,
   },
 });

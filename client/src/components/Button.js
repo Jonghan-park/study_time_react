@@ -5,7 +5,7 @@ import {
   stopTimer,
   resetTimer,
   saveTimer,
-} from "../features/timer/timerSlice";
+} from "../features/operation/operationSlice";
 
 const Button = ({ name }) => {
   const dispatch = useDispatch();
