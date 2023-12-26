@@ -9,7 +9,7 @@ const Timer = ({ fullRef }) => {
 
   const dispatch = useDispatch();
   const isOn = useSelector((state) => state.operation.isOn);
-  const { selectFormattedSec, min, hour } = useSelector((state) => state.timer);
+  const { sec, min, hour } = useSelector((state) => state.timer);
 
   useEffect(() => {
     let intervalId;
@@ -55,7 +55,7 @@ const Timer = ({ fullRef }) => {
         <span>:</span>
         <h1 className="minutes">{min}</h1>
         <span>:</span>
-        <h1 className="seconds">{selectFormattedSec}</h1>
+        <h1 className="seconds">{sec}</h1>
         <div className="full_screen_mode">
           {fullscreen ? (
             <MdFullscreenExit

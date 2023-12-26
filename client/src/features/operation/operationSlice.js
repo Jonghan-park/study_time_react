@@ -14,6 +14,7 @@ const operationSlice = createSlice({
     },
     resetTimer: (state) => {
       state.isOn = false;
+      //
     },
     saveTimer: (state) => {
       state.isOn = false;

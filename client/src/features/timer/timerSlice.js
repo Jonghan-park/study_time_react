@@ -3,8 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 const timerSlice = createSlice({
   name: "timer",
   initialState: {
-    sec: 0,
-    min: 0,
+    sec: `00`,
+    min: `00`,
     hour: 0,
   },
   reducers: {
@@ -14,13 +14,18 @@ const timerSlice = createSlice({
       if (state.sec === 60) {
         state.sec = 0;
         state.min++;
+      } else if (state.sec < 10) {
+        state.sec = `0${state.sec}`;
       }
     },
     incrementMin: (state) => {
       state.min++;
+
       if (state.min === 60) {
         state.min = 0;
         state.hour++;
+      } else if (state.min < 10) {
+        state.min = `0${state.min}`;
       }
     },
     incrementHour: (state) => {
@@ -36,8 +41,4 @@ const timerSlice = createSlice({
 
 export const { incrementSec, incrementMin, incrementHour, resetTime } =
   timerSlice.actions;
-export const selectFormattedSec = (state) => {
-  const sec = state.timer.sec;
-  return sec < 10 ? `0${sec}` : `${sec}`;
-};
 export default timerSlice.reducer;
