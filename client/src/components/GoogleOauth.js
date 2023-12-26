@@ -2,8 +2,12 @@ import React from "react";
 import "../styles/GoogleIcon.css";
 
 const GoogleOauth = () => {
+  const loginOauth = (e) => {
+    e.preventDefault();
+    window.location.href = "http://localhost:5000/auth/google";
+  };
   return (
-    <button className="gsi-material-button">
+    <button className="gsi-material-button" onClick={loginOauth}>
       <div className="gsi-material-button-state"></div>
       <div className="gsi-material-button-content-wrapper">
         <div className="gsi-material-button-icon">
