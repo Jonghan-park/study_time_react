@@ -6,6 +6,7 @@ import {
   resetTimer,
   saveTimer,
 } from "../features/operation/operationSlice";
+import { resetTime } from "../features/timer/timerSlice";
 
 const Button = ({ name }) => {
   const dispatch = useDispatch();
@@ -19,6 +20,7 @@ const Button = ({ name }) => {
         break;
       case "Reset":
         dispatch(resetTimer());
+        dispatch(resetTime());
         break;
       case "Save":
         dispatch(saveTimer());

@@ -12,33 +12,32 @@ const timerSlice = createSlice({
       state.sec++;
 
       if (state.sec === 60) {
-        state.sec = 0;
+        state.sec = `00`;
+
+        // Increement min
         state.min++;
+        if (state.min === 60) {
+          state.min = 0;
+          state.hour++;
+        } else if (state.min < 10) {
+          state.min = `0${state.min}`;
+
+          // Increement hour
+        } else if (state.min === 60) {
+          state.min = `00`;
+          state.hour++;
+        }
       } else if (state.sec < 10) {
         state.sec = `0${state.sec}`;
       }
     },
-    incrementMin: (state) => {
-      state.min++;
-
-      if (state.min === 60) {
-        state.min = 0;
-        state.hour++;
-      } else if (state.min < 10) {
-        state.min = `0${state.min}`;
-      }
-    },
-    incrementHour: (state) => {
-      state.hour++;
-    },
     resetTime: (state) => {
-      state.sec = 0;
-      state.min = 0;
+      state.sec = `00`;
+      state.min = `00`;
       state.hour = 0;
     },
   },
 });
 
-export const { incrementSec, incrementMin, incrementHour, resetTime } =
-  timerSlice.actions;
+export const { incrementSec, resetTime } = timerSlice.actions;
 export default timerSlice.reducer;
