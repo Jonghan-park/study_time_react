@@ -1,8 +1,20 @@
 const router = require("express").Router();
+require("dotenv").config();
 const passport = require("passport");
+const jwt = require("jsonwebtoken");
+const GoogleStrategy = require("passport-google-oauth20").Strategy;
+
 const GOOGLE_CLIENT_ID = process.env.GOOGLE_ID;
 const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_SECRET;
-const GoogleStrategy = require("passport-google-oauth20").Strategy;
+
+router.get("/login/success", async (req, res) => {
+  if (req.user) {
+    const token = jwt.sign({ user: req.user }, process.env.JWT_SECRET, {
+      expiresIn: "1h",
+    });
+    res.status(200).json({ success: true, token: token });
+  }
+});
 
 router.get(
   "/google",
@@ -15,9 +27,6 @@ router.get(
     failureRedirect: "/login",
   })
 );
-router.get("/login/success", async (req, res) => {
-  res.status(200).json({ success: true, user: req.user });
-});
 
 passport.use(
   new GoogleStrategy(
@@ -25,27 +34,19 @@ passport.use(
       clientID: GOOGLE_CLIENT_ID,
       clientSecret: GOOGLE_CLIENT_SECRET,
       callbackURL: "/auth/google/callback",
-      scope: ["openid", "email", "profile"],
     },
-    function (accessToken, refreshToken, profile, cb) {
-      const user = {
-        name: profile.displayName,
-        pic: profile.photos[0].value,
-        email: profile.emails[0].value,
-        token: accessToken,
-      };
-
-      return cb(null, user);
+    function (accessToken, refreshToken, profile, done) {
+      done(null, profile);
     }
   )
 );
 
-passport.serializeUser(function (user, done) {
-  done(null, user);
+passport.serializeUser(function (user, cb) {
+  cb(null, user);
 });
 
-passport.deserializeUser(function (user, done) {
-  done(null, user);
+passport.deserializeUser(function (obj, cb) {
+  cb(null, obj);
 });
 
 module.exports = router;
