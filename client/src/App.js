@@ -31,7 +31,10 @@ function App() {
   };
 
   useEffect(() => {
-    getUser();
+    const userToken = localStorage.getItem("userToken");
+    if (!userToken) {
+      getUser();
+    }
   }, []);
   return (
     <Provider store={store}>
