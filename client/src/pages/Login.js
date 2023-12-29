@@ -1,9 +1,15 @@
 import React from "react";
 import "../styles/Login.css";
 import GoogleOauth from "../components/GoogleOauth";
+import { useSelector } from "react-redux";
 
 const Login = () => {
-  return (
+  const isAuth = useSelector((state) => state.user.isAuthenticated);
+  return isAuth ? (
+    <div>
+      <h1>You're already logged in.</h1>
+    </div>
+  ) : (
     <div className="form_container">
       <form>
         <h1>Login</h1>
