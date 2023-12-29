@@ -1,14 +1,17 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Provider } from "react-redux";
+import { useDispatch } from "react-redux";
+import { jwtDecode } from "jwt-decode";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
 import PrivateRoute from "./components/PrivateRoute";
 import Nav from "./components/Nav";
-import store from "./store/store";
+import { setUser } from "./features/user/userSlice";
 
 function App() {
+  const [token, setToken] = useState(localStorage.getItem("userToken"));
+  const dispatch = useDispatch();
   const getUser = async () => {
     await fetch("http://localhost:5000/auth/login/success", {
       method: "GET",
@@ -24,6 +27,7 @@ function App() {
       })
       .then((responseJson) => {
         localStorage.setItem("userToken", responseJson.token);
+        setToken(responseJson.token);
       })
       .catch((error) => {
         console.log(error);
@@ -31,31 +35,31 @@ function App() {
   };
 
   useEffect(() => {
-    const userToken = localStorage.getItem("userToken");
-    if (!userToken) {
+    if (!token) {
       getUser();
+    } else {
+      const tokenData = jwtDecode(token);
+      dispatch(setUser(tokenData.user));
     }
-  }, []);
+  }, [token]);
   return (
-    <Provider store={store}>
-      <div className="App">
-        <Router>
-          <Nav />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/login" element={<Login />} />
-            <Route
-              path="/profile"
-              element={
-                <PrivateRoute>
-                  <Profile />
-                </PrivateRoute>
-              }
-            />
-          </Routes>
-        </Router>
-      </div>
-    </Provider>
+    <div className="App">
+      <Router>
+        <Nav />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route
+            path="/profile"
+            element={
+              <PrivateRoute>
+                <Profile />
+              </PrivateRoute>
+            }
+          />
+        </Routes>
+      </Router>
+    </div>
   );
 }
 

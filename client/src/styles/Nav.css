@@ -3,6 +3,32 @@ nav{
   display: flex;
   align-items: center;
 }
+.profile_container{
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  
+}
+.profile_container a{
+  text-decoration: none;
+  color: #fff;
+  font-size: 1.5rem;
+}
+.profile_container a:hover{
+  color: #8b8a8a;
+
+}
+.profile_container p{
+  font-size: 1.5rem;
+  color: #fff;
+  margin: 2rem;
+  cursor: pointer;
+
+}
+.profile_container p:hover{
+  color: #8b8a8a;
+}
 .login_container{
   width: 100%;
   padding: 0 2rem;

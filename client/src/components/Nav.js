@@ -4,16 +4,21 @@ import { FaArrowLeft } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { jwtDecode } from "jwt-decode";
 import "../styles/Nav.css";
-import { setUser } from "../features/user/userSlice";
+import { setUser, logout } from "../features/user/userSlice";
 
 const Nav = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.user.user);
+  const user = useSelector((state) => state.user);
 
   const goBack = () => {
     navigate("/");
+  };
+
+  const logoutUser = () => {
+    localStorage.removeItem("userToken");
+    dispatch(logout());
   };
 
   useEffect(() => {
@@ -22,7 +27,7 @@ const Nav = () => {
       const tokenData = jwtDecode(getUserToken);
       dispatch(setUser(tokenData.user));
     }
-  }, []);
+  }, [user.isAuthenticated]);
 
   return (
     <nav>
@@ -30,11 +35,13 @@ const Nav = () => {
         <div className="go_back_container">
           <FaArrowLeft onClick={() => goBack()} className="go_back" />
         </div>
-      ) : user ? (
+      ) : user.isAuthenticated ? (
         <div className="profile_container">
           <Link to="/profile" className="profile">
-            {user.displayName}
+            Hello! {user.user.name.givenName}
           </Link>
+          <hr />
+          <p onClick={logoutUser}>Logout</p>
         </div>
       ) : (
         <div className="login_container">
