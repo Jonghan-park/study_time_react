@@ -9,16 +9,27 @@ const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_SECRET;
 
 router.get("/login/success", async (req, res) => {
   if (req.user) {
-    const token = jwt.sign({ user: req.user }, process.env.JWT_SECRET, {
-      expiresIn: "1h",
-    });
+    const token = jwt.sign(
+      { user: req.user, accessToken: req.user.accessToken },
+      process.env.JWT_SECRET,
+      {
+        expiresIn: "1h",
+      }
+    );
     res.status(200).json({ success: true, token: token });
   }
 });
 
 router.get(
   "/google",
-  passport.authenticate("google", { scope: ["profile", "openid", "email"] })
+  passport.authenticate("google", {
+    scope: [
+      "profile",
+      "openid",
+      "email",
+      "https://www.googleapis.com/auth/calendar",
+    ],
+  })
 );
 router.get(
   "/google/callback",
@@ -36,6 +47,7 @@ passport.use(
       callbackURL: "/auth/google/callback",
     },
     function (accessToken, refreshToken, profile, done) {
+      profile.accessToken = accessToken;
       done(null, profile);
     }
   )

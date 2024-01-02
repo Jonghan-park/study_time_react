@@ -30,7 +30,7 @@ function App() {
         setToken(responseJson.token);
       })
       .catch((error) => {
-        console.log(error);
+        console.log("Error: " + error);
       });
   };
 
