@@ -29,7 +29,6 @@ const Button = ({ name }) => {
     const accessToken = localStorage.getItem("userToken");
     const tokenData = jwtDecode(accessToken);
 
-    console.log(formattedTime);
     await fetch(
       "https://www.googleapis.com/calendar/v3/calendars/primary/events",
       {
