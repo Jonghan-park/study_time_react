@@ -67,8 +67,7 @@ const Button = ({ name }) => {
         dispatch(resetTime());
         break;
       case "Save":
-        // handleGoogleCalendar();
-        dispatch(openModal());
+        handleGoogleCalendar();
         dispatch(saveTimer());
         break;
       default:
