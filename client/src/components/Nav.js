@@ -37,7 +37,8 @@ const Nav = () => {
         </div>
       ) : user.isAuthenticated ? (
         <div className="profile_container">
-          <Link to="/profile" className="profile">
+          {/* <Link to="/profile" className="profile"> */}
+          <Link to="#" className="profile">
             Hello! {user.user.name.givenName}
           </Link>
           <hr />

@@ -49,14 +49,14 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
-          <Route
+          {/* <Route
             path="/profile"
             element={
               <PrivateRoute>
                 <Profile />
               </PrivateRoute>
             }
-          />
+          /> */}
         </Routes>
       </Router>
     </div>
