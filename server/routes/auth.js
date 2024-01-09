@@ -34,7 +34,7 @@ router.get(
 router.get(
   "/google/callback",
   passport.authenticate("google", {
-    successRedirect: "http://localhost:3000",
+    successRedirect: "https://study-time-m3hv.onrender.com",
     failureRedirect: "/login",
   })
 );

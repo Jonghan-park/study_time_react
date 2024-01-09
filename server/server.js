@@ -18,7 +18,7 @@ const secretKey =
 // Use cors and sessions
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: "https://study-time-m3hv.onrender.com",
     credentials: true,
   })
 );

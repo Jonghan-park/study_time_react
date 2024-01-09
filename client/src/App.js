@@ -13,15 +13,18 @@ function App() {
   const [token, setToken] = useState(localStorage.getItem("userToken"));
   const dispatch = useDispatch();
   const getUser = async () => {
-    await fetch("http://localhost:5000/auth/login/success", {
-      method: "GET",
-      credentials: "include",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Credentials": true,
-      },
-    })
+    await fetch(
+      "https://study-time-web-server.onrender.com/auth/login/success",
+      {
+        method: "GET",
+        credentials: "include",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Credentials": true,
+        },
+      }
+    )
       .then((response) => {
         if (response.status === 200) return response.json();
       })

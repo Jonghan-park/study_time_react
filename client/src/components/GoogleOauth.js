@@ -4,7 +4,8 @@ import "../styles/GoogleIcon.css";
 const GoogleOauth = () => {
   const loginOauth = (e) => {
     e.preventDefault();
-    window.location.href = "http://localhost:5000/auth/google";
+    window.location.href =
+      "https://study-time-web-server.onrender.com/auth/google";
   };
   return (
     <button className="gsi-material-button" onClick={loginOauth}>
