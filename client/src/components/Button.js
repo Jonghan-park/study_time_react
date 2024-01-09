@@ -17,6 +17,8 @@ const Button = ({ name }) => {
   const [timeZone, setTimeZone] = useState(
     Intl.DateTimeFormat().resolvedOptions().timeZone
   );
+  const [hasError, setHasError] = useState("");
+
   const time = useSelector((state) => state.timer);
   const isModalOpen = useSelector((state) => state.modal.isOpen);
   const dispatch = useDispatch();
@@ -47,6 +49,10 @@ const Button = ({ name }) => {
         return data.json();
       })
       .then((res) => {
+        if (res.error) {
+          console.log(res.error);
+          setHasError(res.error.message);
+        }
         dispatch(openModal());
       })
       .catch((error) => {
@@ -84,8 +90,18 @@ const Button = ({ name }) => {
         {name}
       </button>
       <Modal isOpen={isModalOpen}>
-        <h1>Event Saved!</h1>
-        <p>Event has been saved to your Google Calendar</p>
+        {hasError ? (
+          <>
+            <h1>Error!</h1>
+            <p>An error occurred while saving the event.</p>
+            <p>Logout and login again !</p>
+          </>
+        ) : (
+          <>
+            <h1>Event Saved!</h1>
+            <p>Event has been saved to your Google Calendar</p>
+          </>
+        )}
         <button className="close-button" onClick={handleCloseModal}>
           Close
         </button>
