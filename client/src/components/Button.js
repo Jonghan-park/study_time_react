@@ -24,6 +24,7 @@ const Button = ({ name }) => {
   const dispatch = useDispatch();
 
   const handleGoogleCalendar = async () => {
+    let tokenData = "";
     const formattedTime = `${time.hour} ${time.hour > 1 ? "hours" : "hour"} ${
       time.min
     } ${time.min > 1 ? "minutes" : "minute"} ${time.sec} ${
@@ -31,8 +32,10 @@ const Button = ({ name }) => {
     }`;
     const eventBody = createEvent(formattedTime, currentDate, timeZone);
 
-    const accessToken = localStorage.getItem("userToken");
-    const tokenData = jwtDecode(accessToken);
+    if (localStorage.getItem("userToken")) {
+      const accessToken = localStorage.getItem("userToken");
+      tokenData = jwtDecode(accessToken);
+    }
 
     await fetch(
       "https://www.googleapis.com/calendar/v3/calendars/primary/events",
