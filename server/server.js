@@ -46,7 +46,7 @@ app.use(session({ secret: secretKey, resave: true, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use("/auth", cors(), authRoute);
+app.use("/auth", authRoute);
 
 app.get("/api", (req, res) => {
   res.send({ express: "Hello From Express" });
