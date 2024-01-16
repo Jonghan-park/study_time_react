@@ -25,7 +25,12 @@ function App() {
         mode: "cors",
       }
     )
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+      })
       .then((responseJson) => {
         localStorage.setItem("userToken", responseJson.token);
       })
