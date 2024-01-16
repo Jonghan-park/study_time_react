@@ -22,32 +22,31 @@ app.use(
     credentials: true,
   })
 );
-app.options("*", cors());
 app.use(session({ secret: secretKey, resave: true, saveUninitialized: true }));
 
 // Enable CORS for all routes
-app.use((req, res, next) => {
-  res.header(
-    "Access-Control-Allow-Origin",
-    "https://study-time-zwj9.onrender.com"
-  );
-  res.header(
-    "Access-Control-Allow-Methods",
-    "GET, POST, OPTIONS, PUT, PATCH, DELETE"
-  );
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
-  res.header("Access-Control-Allow-Credentials", true);
-  next();
-});
+// app.use((req, res, next) => {
+//   res.header(
+//     "Access-Control-Allow-Origin",
+//     "https://study-time-zwj9.onrender.com"
+//   );
+//   res.header(
+//     "Access-Control-Allow-Methods",
+//     "GET, POST, OPTIONS, PUT, PATCH, DELETE"
+//   );
+//   res.header(
+//     "Access-Control-Allow-Headers",
+//     "Origin, X-Requested-With, Content-Type, Accept"
+//   );
+//   res.header("Access-Control-Allow-Credentials", true);
+//   next();
+// });
 
 // Passport config
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use("/auth", authRoute);
+app.use("/auth", cors(), authRoute);
 
 app.get("/api", (req, res) => {
   res.send({ express: "Hello From Express" });
