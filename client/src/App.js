@@ -29,6 +29,7 @@ function App() {
         if (response.status === 200) return response.json();
       })
       .then((responseJson) => {
+        console.log(responseJson);
         localStorage.setItem("userToken", responseJson.token);
         setToken(responseJson.token);
       })
