@@ -39,13 +39,12 @@ function App() {
   };
 
   useEffect(() => {
-    if (!token) {
-      getUser();
-    } else {
+    if (token) {
       const tokenData = jwtDecode(token);
       dispatch(setUser(tokenData.user));
     }
-  }, [token]);
+    getUser();
+  }, []);
   return (
     <div className="App">
       <Router>
