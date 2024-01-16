@@ -10,7 +10,6 @@ import Nav from "./components/Nav";
 import { setUser } from "./features/user/userSlice";
 
 function App() {
-  const [token, setToken] = useState(localStorage.getItem("userToken"));
   const dispatch = useDispatch();
   const getUser = async () => {
     await fetch(
@@ -23,13 +22,12 @@ function App() {
           "Content-Type": "application/json",
           "Access-Control-Allow-Credentials": true,
         },
-        mode: "no-cors",
+        mode: "cors",
       }
     )
       .then((response) => response.json())
       .then((responseJson) => {
         localStorage.setItem("userToken", responseJson.token);
-        setToken(responseJson.token);
       })
       .catch((error) => {
         console.log("Error: " + error);
@@ -37,6 +35,7 @@ function App() {
   };
 
   useEffect(() => {
+    const token = localStorage.getItem("userToken");
     if (token) {
       const tokenData = jwtDecode(token);
       dispatch(setUser(tokenData.user));
