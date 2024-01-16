@@ -13,35 +13,25 @@ import { setUser } from "./features/user/userSlice";
 function App() {
   const dispatch = useDispatch();
   const getUser = async () => {
-    try {
-      const res = await axios.get(
-        "https://study-time-web-server.onrender.com/auth/login/success",
-        { withCredentials: true }
-      );
-      console.log(res);
-      localStorage.setItem("userToken", res.token);
-    } catch (error) {
-      console.log(error);
-    }
-    // await fetch(
-    //   "https://study-time-web-server.onrender.com/auth/login/success",
-    //   {
-    //     method: "GET",
-    //     credentials: "include",
-    //     headers: {
-    //       Accept: "application/json",
-    //       "Content-Type": "application/json",
-    //       "Access-Control-Allow-Credentials": true,
-    //     },
-    //   }
-    // )
-    //   .then((response) => response.json())
-    //   .then((responseJson) =>
-    //     localStorage.setItem("userToken", responseJson.token)
-    //   )
-    //   .catch((error) => {
-    //     console.log("Error: " + error);
-    //   });
+    await fetch(
+      "https://study-time-web-server.onrender.com/auth/login/success",
+      {
+        method: "GET",
+        credentials: "include",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Credentials": true,
+        },
+      }
+    )
+      .then((response) => response.json())
+      .then((responseJson) =>
+        localStorage.setItem("userToken", responseJson.token)
+      )
+      .catch((error) => {
+        console.log("Error: " + error);
+      });
   };
 
   useEffect(() => {
