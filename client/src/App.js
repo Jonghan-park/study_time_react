@@ -33,7 +33,6 @@ function App() {
     //       "Content-Type": "application/json",
     //       "Access-Control-Allow-Credentials": true,
     //     },
-    //     mode: "cors",
     //   }
     // )
     //   .then((response) => response.json())
