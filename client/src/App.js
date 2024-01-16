@@ -15,8 +15,10 @@ function App() {
   const getUser = async () => {
     try {
       const res = await axios.get(
-        "https://study-time-web-server.onrender.com/auth/login/success"
+        "https://study-time-web-server.onrender.com/auth/login/success",
+        { withCredentials: true }
       );
+      console.log(res);
       localStorage.setItem("userToken", res.token);
     } catch (error) {
       console.log(error);
