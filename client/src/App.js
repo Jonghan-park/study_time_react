@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { jwtDecode } from "jwt-decode";
+import axios from "axios";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
@@ -12,26 +13,34 @@ import { setUser } from "./features/user/userSlice";
 function App() {
   const dispatch = useDispatch();
   const getUser = async () => {
-    await fetch(
-      "https://study-time-web-server.onrender.com/auth/login/success",
-      {
-        method: "GET",
-        credentials: "include",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Credentials": true,
-        },
-        mode: "cors",
-      }
-    )
-      .then((response) => response.json())
-      .then((responseJson) =>
-        localStorage.setItem("userToken", responseJson.token)
-      )
-      .catch((error) => {
-        console.log("Error: " + error);
-      });
+    try {
+      const res = await axios.get(
+        "https://study-time-web-server.onrender.com/auth/login/success"
+      );
+      localStorage.setItem("userToken", res.token);
+    } catch (error) {
+      console.log(error);
+    }
+    // await fetch(
+    //   "https://study-time-web-server.onrender.com/auth/login/success",
+    //   {
+    //     method: "GET",
+    //     credentials: "include",
+    //     headers: {
+    //       Accept: "application/json",
+    //       "Content-Type": "application/json",
+    //       "Access-Control-Allow-Credentials": true,
+    //     },
+    //     mode: "cors",
+    //   }
+    // )
+    //   .then((response) => response.json())
+    //   .then((responseJson) =>
+    //     localStorage.setItem("userToken", responseJson.token)
+    //   )
+    //   .catch((error) => {
+    //     console.log("Error: " + error);
+    //   });
   };
 
   useEffect(() => {
