@@ -26,11 +26,8 @@ function App() {
         mode: "no-cors",
       }
     )
-      .then((response) => {
-        return response.json();
-      })
+      .then((response) => response.json())
       .then((responseJson) => {
-        console.log(responseJson);
         localStorage.setItem("userToken", responseJson.token);
         setToken(responseJson.token);
       })
