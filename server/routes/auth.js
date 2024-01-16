@@ -34,8 +34,8 @@ router.get(
 router.get(
   "/google/callback",
   passport.authenticate("google", {
-    successRedirect: "https://study-time-zwj9.onrender.com",
-    failureRedirect: "https://study-time-zwj9.onrender.com/login",
+    successRedirect: "/",
+    failureRedirect: "/login",
   })
 );
 
