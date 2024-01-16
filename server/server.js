@@ -24,6 +24,23 @@ app.use(
 );
 app.use(session({ secret: secretKey, resave: true, saveUninitialized: true }));
 
+// Enable CORS for all routes
+app.use((req, res, next) => {
+  res.header(
+    "Access-Control-Allow-Origin",
+    "https://study-time-zwj9.onrender.com"
+  );
+  res.header(
+    "Access-Control-Allow-Methods",
+    "GET, POST, OPTIONS, PUT, PATCH, DELETE"
+  );
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  next();
+});
+
 // Passport config
 app.use(passport.initialize());
 app.use(passport.session());

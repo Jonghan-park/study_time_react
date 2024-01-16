@@ -23,6 +23,7 @@ function App() {
           "Content-Type": "application/json",
           "Access-Control-Allow-Credentials": true,
         },
+        mode: "no-cors",
       }
     )
       .then((response) => {
