@@ -1,6 +1,5 @@
 const router = require("express").Router();
 require("dotenv").config();
-const cors = require("cors");
 const passport = require("passport");
 const jwt = require("jsonwebtoken");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
@@ -8,7 +7,11 @@ const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const GOOGLE_CLIENT_ID = process.env.GOOGLE_ID;
 const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_SECRET;
 
-router.get("/login/success", cors(), async (req, res) => {
+router.get("/login/success", async (req, res) => {
+  res.set(
+    "Access-Control-Allow-Origin",
+    "https://study-time-zwj9.onrender.com"
+  );
   if (req.user) {
     const token = jwt.sign(
       { user: req.user, accessToken: req.user.accessToken },
