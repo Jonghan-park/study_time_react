@@ -18,7 +18,7 @@ function App() {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
-        "Access-Control-Allow-Credentials": true,
+        "Access-Control-Request-Credentials": true,
       },
     })
       .then((response) => response.json())

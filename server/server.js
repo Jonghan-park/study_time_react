@@ -16,20 +16,17 @@ const secretKey =
   crypto.getRandomValues(new Uint32Array(10)).join("") + Date.now();
 
 // Use cors and sessions
-app.use(
-  cors({
-    origin: "https://study-time-zwj9.onrender.com",
-    credentials: true,
-  })
-);
+// app.use(
+//   cors({
+//     origin: "https://study-time-zwj9.onrender.com",
+//     credentials: true,
+//   })
+// );
 app.use(session({ secret: secretKey, resave: true, saveUninitialized: true }));
 
 // Enable CORS for all routes
 app.use((req, res, next) => {
-  res.header(
-    "Access-Control-Allow-Origin",
-    "https://study-time-zwj9.onrender.com"
-  );
+  res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Methods", "GET");
   res.header(
     "Access-Control-Allow-Headers",
