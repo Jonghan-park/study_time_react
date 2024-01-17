@@ -18,7 +18,7 @@ const secretKey =
 // Use cors and sessions
 app.use(
   cors({
-    origin: "https://study-time-zwj9.onrender.com",
+    origin: "https://study-time-zwj9.onrender.com/auth/login/success",
     credentials: true,
   })
 );
