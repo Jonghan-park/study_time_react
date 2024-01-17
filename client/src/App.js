@@ -18,15 +18,19 @@ function App() {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
-        "Access-Control-Request-Credentials": true,
       },
     })
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
       .then((responseJson) =>
         localStorage.setItem("userToken", responseJson.token)
       )
       .catch((error) => {
-        console.log("Error: " + error);
+        console.log("Error: " + error.message);
       });
   };
 

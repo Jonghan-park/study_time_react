@@ -18,11 +18,11 @@ const secretKey =
 // Use cors and sessions
 app.use(
   cors({
-    origin: "https://study-time-zwj9.onrender.com",
+    origin: "*",
     credentials: true,
   })
 );
-
+app.options("*", cors());
 app.use(session({ secret: secretKey, resave: true, saveUninitialized: true }));
 
 // Enable CORS for all routes
