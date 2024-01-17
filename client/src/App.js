@@ -11,15 +11,18 @@ import { setUser } from "./features/user/userSlice";
 
 function App() {
   const dispatch = useDispatch();
-  const getUser = () => {
-    fetch("https://study-time-web-server.onrender.com/auth/login/success", {
-      method: "GET",
-      credentials: "include",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-    })
+  const getUser = async () => {
+    await fetch(
+      "https://study-time-web-server.onrender.com/auth/login/success",
+      {
+        method: "GET",
+        credentials: "include",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      }
+    )
       .then((response) => {
         if (!response.ok) {
           throw new Error("Network response was not ok");
