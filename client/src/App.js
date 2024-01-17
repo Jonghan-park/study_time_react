@@ -11,21 +11,16 @@ import { setUser } from "./features/user/userSlice";
 
 function App() {
   const dispatch = useDispatch();
-  const getUser = async () => {
-    await fetch(
-      "https://study-time-web-server.onrender.com/auth/login/success",
-      {
-        method: "GET",
-        credentials: "include",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Credentials": true,
-          "Access-Control-Allow-Origin":
-            "https://study-time-zwj9.onrender.com/auth/login/success",
-        },
-      }
-    )
+  const getUser = () => {
+    fetch("https://study-time-web-server.onrender.com/auth/login/success", {
+      method: "GET",
+      credentials: "include",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Credentials": true,
+      },
+    })
       .then((response) => response.json())
       .then((responseJson) =>
         localStorage.setItem("userToken", responseJson.token)
