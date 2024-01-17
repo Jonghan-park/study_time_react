@@ -14,6 +14,7 @@ const session = require("express-session");
 // Generate a random secret key
 const secretKey =
   crypto.getRandomValues(new Uint32Array(10)).join("") + Date.now();
+app.use(session({ secret: secretKey, resave: true, saveUninitialized: true }));
 
 // Use cors and sessions
 app.use(
@@ -23,20 +24,15 @@ app.use(
   })
 );
 app.options("*", cors());
-app.use(session({ secret: secretKey, resave: true, saveUninitialized: true }));
 
 // Enable CORS for all routes
 app.use((req, res, next) => {
-  res.header(
-    "Access-Control-Allow-Origin",
-    "https://study-time-zwj9.onrender.com"
-  );
+  res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Methods", "GET");
   res.header(
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept"
   );
-  res.header("Access-Control-Allow-Credentials", true);
   next();
 });
 
