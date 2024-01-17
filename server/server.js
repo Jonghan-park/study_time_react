@@ -16,27 +16,26 @@ const secretKey =
   crypto.getRandomValues(new Uint32Array(10)).join("") + Date.now();
 
 // Use cors and sessions
-// app.use(
-//   cors({
-//     origin: "https://study-time-zwj9.onrender.com",
-//     credentials: true,
-//   })
-// );
+app.use(
+  cors({
+    origin: "*",
+    credentials: true,
+  })
+);
 
-app.use(cors());
 app.use(session({ secret: secretKey, resave: true, saveUninitialized: true }));
 
 // Enable CORS for all routes
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Methods", "GET");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
-  res.header("Access-Control-Allow-Credentials", true);
-  next();
-});
+// app.use((req, res, next) => {
+//   res.header("Access-Control-Allow-Origin", "*");
+//   res.header("Access-Control-Allow-Methods", "GET");
+//   res.header(
+//     "Access-Control-Allow-Headers",
+//     "Origin, X-Requested-With, Content-Type, Accept"
+//   );
+//   res.header("Access-Control-Allow-Credentials", true);
+//   next();
+// });
 
 // Passport config
 app.use(passport.initialize());
