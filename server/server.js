@@ -22,6 +22,8 @@ const secretKey =
 //     credentials: true,
 //   })
 // );
+
+app.use(cors());
 app.use(session({ secret: secretKey, resave: true, saveUninitialized: true }));
 
 // Enable CORS for all routes
