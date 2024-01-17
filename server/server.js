@@ -19,15 +19,16 @@ app.use(session({ secret: secretKey, resave: true, saveUninitialized: true }));
 // Use cors and sessions
 app.use(
   cors({
-    origin: "*",
+    origin: "https://study-time-zwj9.onrender.com",
     credentials: true,
   })
 );
-app.options("*", cors());
-
 // Enable CORS for all routes
 app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Origin",
+    "https://study-time-zwj9.onrender.com"
+  );
   res.header("Access-Control-Allow-Methods", "GET");
   res.header(
     "Access-Control-Allow-Headers",
