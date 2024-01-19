@@ -19,23 +19,10 @@ app.use(session({ secret: secretKey, resave: true, saveUninitialized: true }));
 // Use cors and sessions
 app.use(
   cors({
-    origin: "https://study-time-web-server.onrender.com",
+    origin: "https://study-time-zwj9.onrender.com/",
     credentials: true,
   })
 );
-// Enable CORS for all routes
-app.use((req, res, next) => {
-  res.header(
-    "Access-Control-Allow-Origin",
-    "https://study-time-web-server.onrender.com"
-  );
-  res.header("Access-Control-Allow-Methods", "GET");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
-  next();
-});
 
 // Passport config
 app.use(passport.initialize());
