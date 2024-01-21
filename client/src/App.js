@@ -13,15 +13,15 @@ function App() {
   const dispatch = useDispatch();
   const getUser = async () => {
     return await fetch(
-      "https://study-time-web-server.onrender.com/auth/login/success"
-      // {
-      //   method: "GET",
-      //   credentials: "include",
-      //   headers: {
-      //     Accept: "application/json",
-      //     "Content-Type": "application/json",
-      //   },
-      // }
+      "https://study-time-web-server.onrender.com/auth/login/success",
+      {
+        method: "GET",
+        credentials: "include",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      }
     )
       .then((response) => {
         if (!response.ok) {
