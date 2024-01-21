@@ -18,10 +18,12 @@ app.use(session({ secret: secretKey, resave: true, saveUninitialized: true }));
 
 // Use cors and sessions
 
-cors({
-  origin: "https://study-time-zwj9.onrender.com/",
-  credentials: true,
-});
+app.use(
+  cors({
+    origin: "https://study-time-zwj9.onrender.com/",
+    credentials: true,
+  })
+);
 
 // Passport config
 app.use(passport.initialize());
