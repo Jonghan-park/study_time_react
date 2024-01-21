@@ -12,7 +12,7 @@ import { setUser } from "./features/user/userSlice";
 function App() {
   const dispatch = useDispatch();
   const getUser = async () => {
-    await fetch(
+    return await fetch(
       "https://study-time-web-server.onrender.com/auth/login/success"
       // {
       //   method: "GET",
